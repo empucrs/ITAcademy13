@@ -8,17 +8,24 @@ class MainScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('First Route'),
       ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Open route'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DetailScreen()),
-            );
-          },
-        ),
-      ),
+      body:
+        GestureDetector(
+          // NAVEGAÇÃO COM CHAMADA DE CLASSES
+          // onTap: () => Navigator.push(context,MaterialPageRoute(builder: (_) => DetailScreen()),
+          // NAVEGAÇÃO COM ROTAS DEFINIDAS
+           onTap: () => Navigator.pushNamed(context, "/secondScreen"),
+        )
+      // Center(
+        // child: ElevatedButton(
+        //   child: Text('Open route'),
+        //   onPressed: () {
+        //     Navigator.push(
+        //       context,
+        //       MaterialPageRoute(builder: (context) => DetailScreen()),
+        //     );
+        //   },
+        // ),
+      // ),
     );
   }
 }

@@ -9,9 +9,7 @@ class DetailScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
           child: Text('Go back!'),
         ),
       ),
