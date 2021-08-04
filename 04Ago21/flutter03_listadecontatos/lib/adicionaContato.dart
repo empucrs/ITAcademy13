@@ -9,6 +9,7 @@ class adicionaContato extends StatefulWidget {
 
 class _adicionaContatoState extends State<adicionaContato> {
   String nome, idade, telefone, email;
+  bool ehHomem=true;
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +45,23 @@ class _adicionaContatoState extends State<adicionaContato> {
             ),
             onChanged: (value) => email=value,
           ),
+          Row(
+            children: [
+              Text("É homem? "),
+              Checkbox(
+                  value: ehHomem,
+                  onChanged: (value) => setState(() =>ehHomem=value),
+              )
+
+            ],
+          )
+
         ],
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: (){
-          contato contatoAdicionado = contato(nome, int.parse(idade), telefone, email);
+          contato contatoAdicionado = contato(nome, int.parse(idade), telefone, email, ehHomem);
           Navigator.pop(context, contatoAdicionado);
         },
       ),

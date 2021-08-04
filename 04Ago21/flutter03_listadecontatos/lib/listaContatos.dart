@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter03_listadecontatos/adicionaContato.dart';
 import 'package:flutter03_listadecontatos/contato.dart';
+import 'package:flutter03_listadecontatos/detalhesDoContato.dart';
 
 class listaContatos extends StatefulWidget {
   @override
@@ -23,10 +24,16 @@ class _listaContatosState extends State<listaContatos> {
         itemBuilder: (context, indice) {
           return Card(
             child: ListTile(
-              leading: Icon(Icons.person),
+              leading: (meusContatos[indice].ehHomem)?Icon(Icons.handyman):Icon(Icons.person),
               title: Text("Nome: ${meusContatos[indice].nome}"),
               subtitle: Text("Fone: ${meusContatos[indice].telefone}"),
-            ),
+              trailing: FloatingActionButton(
+                child: Icon(Icons.delete_forever),
+                onPressed: () => setState(()=>meusContatos.removeAt(indice)),
+                heroTag: null,
+              ),
+              onTap: () => Navigator.pushNamed(context, "/detalhesDoContato", arguments: meusContatos[indice]),
+            ),            
           );
         }
       ),
